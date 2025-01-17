@@ -1,0 +1,19 @@
+erDiagram
+    Chat {
+        int id pk
+        int user_id fk
+        date created_at
+        date updated_at
+    }
+
+    Message {
+        int id pk
+        int chat_id fk
+        str sender
+        str content
+        date created_at
+        date updated_at
+    }
+
+    User ||--o{ Chat : has
+    Chat ||--o{ Message : has

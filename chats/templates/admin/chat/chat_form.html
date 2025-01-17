@@ -1,0 +1,21 @@
+{% extends "admin/change_form.html" %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+<div id="chat" data-chat="{{ original.id }}">
+    <div id="messages">
+        {% for message in original.messages.all|dictsort:"created_at" %}
+        <div class="{{ message.sender | lower }} message">
+            {{ message | format_message | safe }}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="inputs">
+        <textarea id="message-input" placeholder="Type your message here..."></textarea>
+        <input id="send-button" type="button" class="default" value="Send">
+    </div>
+</div>
+<link rel="stylesheet" href="{% static 'chat/css/style.css' %}">
+<script src="{% static 'chat/js/chat.js' %}"></script>
+{% endblock %}

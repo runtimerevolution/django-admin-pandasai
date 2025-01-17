@@ -1,0 +1,51 @@
+erDiagram
+    Movie {
+        int id pk
+        str title
+        str overview
+        float popularity
+        date release_date
+        int budget
+        int revenue
+        int runtime
+        str status
+        str tagline
+        float vote_average
+        int vote_count
+        str poster_path
+        str backdrop_path
+        int original_language_id fk
+    }
+
+    Genre {
+        int id pk
+        str name
+    }
+
+    Language {
+        int id pk
+        str code
+        str name
+    }
+
+    Company {
+        int id pk
+        str name
+    }
+
+    Keyword {
+        int id pk
+        str name
+    }
+
+    Contributor {
+        int id pk
+        str name
+    }
+    
+    Movie |o--|| Language : has
+    Movie }o--o{ Genre : has
+    Movie }o--o{ Company : has
+    Movie }o--o{ Keyword : has
+    Movie }o--o{ Contributor : has
+    Movie }o--o{ Movie : has
